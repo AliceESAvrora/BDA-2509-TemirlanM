@@ -1,55 +1,53 @@
-public class Artwork{
-    private String name;
+import java.util.Objects;
+
+public abstract class Artwork {
+    private String title;
     private int year;
     private double price;
     private Artist artist;
 
-    public Artwork(String name, int year, double price, Artist artist)
-    {
-        this.name = name;
+    public Artwork(String title, int year, double price, Artist artist) {
+        this.title = title;
         this.year = year;
         this.price = price;
         this.artist = artist;
     }
 
-    public void AlterName(String name) {
-        this.name = name;
-    }
-    public void AlterYear(int year) {
-        this.year = year;
-    }
-    public void AlterPrice(double price) {
-        this.price = price;
-    }
-    public void AlterArtist(int yearOfBirth) {
-        this.artist = artist;
+    public String getTitle() {
+        return title;
     }
 
-    public String GetName()
-    {
-        return name;
-    }
-
-    public int GetYear()
-    {
+    public int getYear() {
         return year;
     }
 
-    public double GetPrice()
-    {
+    public double getPrice() {
         return price;
     }
 
-    public Artist GetArtist()
-    {
+    public Artist getArtist() {
         return artist;
     }
 
-    public void getArtworkInfo() {
-        System.out.println("Artwork: " + name + ", Year: " + year + ", Price: $" + price);
-        System.out.println("Artist: " + artist.GetName());
+
+    public abstract String getType();
+    @Override
+    public String toString() {
+        return getType() + ": " + title + " (" + year + "), $" + price + ", Artist: " + artist;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Artwork)) return false;
+        Artwork artwork = (Artwork) o;
+        return year == artwork.year &&
+                Double.compare(artwork.price, price) == 0 &&
+                Objects.equals(title, artwork.title) &&
+                Objects.equals(artist, artwork.artist);
     }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, year, price, artist);
+    }
 }
-
