@@ -1,61 +1,43 @@
-import java.util.Objects;
-
 public class Artist{
     private String name;
     private String country;
-    private int yearOfBirth;
+    private int year_of_birth;
 
-    public Artist(String name, String country, int yearOfBirth)
+    public Artist(String name, String country, int year_of_birth)
     {
         this.name = name;
         this.country = country;
-        this.yearOfBirth = yearOfBirth;
+        this.year_of_birth = year_of_birth;
     }
 
-    public void alterName(String name) {
+    public void AlterName(String name) {
         this.name = name;
     }
 
-    public void alterCountry(String country) {
+    public void AlterCountry(String country) {
         this.country = country;
     }
 
-    public void alterYearOfBirth(int yearOfBirth) {
-        this.yearOfBirth = yearOfBirth;
+    public void AlterYearOfBirth(int yearOfBirth) {
+        this.year_of_birth = year_of_birth;
     }
 
-    public String getName()
+    public String GetName()
     {
         return name;
     }
 
-    public String getCountry()
+    public String GetCountry()
     {
         return country;
     }
 
-    public int getYearOfBirth()
+    public int GetYearOfBirth()
     {
-        return yearOfBirth;
+        return year_of_birth;
     }
 
-    @Override
-    public String toString() {
-        return name + " (" + country + ", " + yearOfBirth + ")";
+    public void getArtistInfo(){
+        System.out.println("Artist: " + name +  ", Country: " + country + ", Year of birth: " + year_of_birth );
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Artist)) return false;
-        Artist artist = (Artist) o;
-        return yearOfBirth == artist.yearOfBirth &&
-                Objects.equals(name, artist.name) &&
-                Objects.equals(country, artist.country);
-    }
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, country, yearOfBirth);
-    }
-
 }

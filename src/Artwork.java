@@ -1,53 +1,54 @@
-import java.util.Objects;
-
-public abstract class Artwork {
-    private String title;
+public class Artwork{
+    private String name;
     private int year;
     private double price;
     private Artist artist;
 
-    public Artwork(String title, int year, double price, Artist artist) {
-        this.title = title;
+    public Artwork(String name, int year, double price, Artist artist)
+    {
+        this.name = name;
         this.year = year;
         this.price = price;
         this.artist = artist;
     }
 
-    public String getTitle() {
-        return title;
+    public void AlterName(String name) {
+        this.name = name;
+    }
+    public void AlterYear(int year) {
+        this.year = year;
+    }
+    public void AlterPrice(double price) {
+        this.price = price;
+    }
+    public void AlterArtist(int yearOfBirth) {
+        this.artist = artist;
     }
 
-    public int getYear() {
+    public String GetName()
+    {
+        return name;
+    }
+
+    public int GetYear()
+    {
         return year;
     }
 
-    public double getPrice() {
+    public double GetPrice()
+    {
         return price;
     }
 
-    public Artist getArtist() {
+    public Artist GetArtist()
+    {
         return artist;
     }
 
-
-    public abstract String getType();
-    @Override
-    public String toString() {
-        return getType() + ": " + title + " (" + year + "), $" + price + ", Artist: " + artist;
-    }
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Artwork)) return false;
-        Artwork artwork = (Artwork) o;
-        return year == artwork.year &&
-                Double.compare(artwork.price, price) == 0 &&
-                Objects.equals(title, artwork.title) &&
-                Objects.equals(artist, artwork.artist);
+    public void getArtworkInfo() {
+        System.out.println("Artwork: " + name + ", Year: " + year + ", Price: $" + price);
+        System.out.println("Artist: " + artist.GetName());
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(title, year, price, artist);
-    }
+
 }
